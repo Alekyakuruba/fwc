@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{lmodern} % Clean modern font
+\setlength{\parindent}{0pt}
+\renewcommand{\baselinestretch}{1.2}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{float}
+
+\setlength{\parindent}{0pt}
+\renewcommand{\baselinestretch}{1.2}
+
+\begin{document}
+
+% Header layout
+\begin{minipage}{0.6\textwidth}
+    \includegraphics[height=1.8cm]{iiitbcomet.jpg} % Replace with actual logo image
+\end{minipage}
+\hfill
+\begin{minipage}{0.35\textwidth}
+\raggedleft
+\textbf{Name:} K.Alekya \\
+\textbf{Batch:} COMETFWC024 \\
+\textbf{Date:} 16 May 2025
+\end{minipage}
+
+\begin{center}
+    {\color{cyan} \LARGE \textbf{GATE QUESTION}}\\
+    {\color{cyan} \Large \textbf{CSE 2010 Q6}}
+\end{center}
+
+\vspace{1em}
+
+% Question
+\textbf{6. \quad The minterm expansion of $f(P, Q, R) = PQ + Q\overline{R} + P\overline{R}$ is}
+
+\begin{multicols}{2}
+\begin{itemize}[label=(A)]
+  \item $m_2 + m_4 + m_6 + m_7$
+\end{itemize}
+
+\begin{itemize}[label=(B)]
+  \item $m_0 + m_1 + m_3 + m_5$
+\end{itemize}
+
+\columnbreak
+
+\begin{itemize}[label=(C)]
+  \item $m_0 + m_1 + m_6 + m_7$
+\end{itemize}
+
+\begin{itemize}[label=(D)]
+  \item $m_2 + m_3 + m_4 + m_5$
+\end{itemize}
+\end{multicols}
+
+% Solution
+\textbf{Solution:} \\
+We evaluate all input combinations of $P, Q, R$:
+
+\[
+f(P, Q, R) = PQ + Q\overline{R} + P\overline{R}
+\]
+
+\begin{align*}
+m_2 &: P=0, Q=1, R=0 \Rightarrow f=1 \\
+m_4 &: P=1, Q=0, R=0 \Rightarrow f=1 \\
+m_6 &: P=1, Q=1, R=0 \Rightarrow f=1 \\
+m_7 &: P=1, Q=1, R=1 \Rightarrow f=1
+\end{align*}
+
+Therefore, the minterm expansion is: \\
+\[
+\boxed{f(P, Q, R) = m_2 + m_4 + m_6 + m_7}
+\]
+
+Correct option: \textbf{(A)}
+
+\end{document}
