@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\begin{document}
+% Header layout
+\begin{minipage}{0.6\textwidth}
+    \includegraphics[height=1.8cm]{IIITB-COMET-Logo.png} % Replace with actual logo image
+\end{minipage}
+\hfill
+\begin{minipage}{0.35\textwidth}
+\raggedleft
+\textbf{Name:} K.Alekya \\
+\textbf{Batch:} COMETFWC024 \\
+\textbf{Date:} May 2025
+\end{minipage}
+
+\begin{center}
+    {\color{cyan} \LARGE \textbf{GATE QUESTION}}\\
+    {\color{cyan} \Large \textbf{ECE 2010 Q39}}
+\end{center}
+\vspace{1em}
+\noindent\textbf{\color{cyan} Question.52} \\
+
+A minimized form of the function \( F \) is:
+\begin{multicols}{2}
+\begin{itemize}
+  \item[(A)] \( F = \overline{X}Y + YZ \)
+  \item[(B)] \( F = \overline{X}\,\overline{Y} + YZ \)
+  \item[(C)] \( F = \overline{X}\,\overline{Y} + Y\overline{Z} \)
+  \item[(D)] \( F = \overline{X}\,\overline{Y} + \overline{Y}Z \)
+\end{itemize}
+\end{multicols}
+
+\noindent\textbf{\color{cyan} Solution.52} \\
+Function \( F \) can be minimized by grouping all 1’s in the K-map as following:
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{kmap.jpeg} % Replace with your actual image file name
+\end{center}
+
+\[
+F = \overline{X}\,\overline{Y} + YZ
+\]
+
+Hence, (B) is the correct option.
+
+\end{document}
