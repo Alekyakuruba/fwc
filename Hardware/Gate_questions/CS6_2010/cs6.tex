@@ -1,0 +1,197 @@
+\documentclass[twocolumn]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{array}
+\geometry{margin=0.7in}
+\pagestyle{empty}
+
+
+
+\begin{document}
+
+\begin{figure}[t]
+    \includegraphics[width=\linewidth]{iiitb_comet.jpeg} % Replace with your logo if needed
+    \textbf{Name: Karappagari Alekya} \\
+    \textbf{Batch: 2} \\
+    \textbf{ID: cometfwc024} \\
+    \textbf{Date: 9th July 2025}
+\end{figure}
+
+\begin{center}
+    {\LARGE \textbf{\textcolor{blue}{GATE CS 2010 – Question Number 6}}}
+\end{center}
+
+\section*{\textcolor{blue}{Question}}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\linewidth]{cs6.png}
+    \caption*{\textbf{Figure: GATE CS Q6 - Minterm Expansion}}
+\end{figure}
+
+\section*{\textcolor{blue}{Given:}}
+
+\[
+f(P, Q, R) = PQ + Q\overline{R} + P\overline{R}
+\]
+
+We need to find the minterm expansion for this function.
+
+\section*{\textcolor{blue}{Solution}}
+
+Let us compute output \( f \) for all \( 2^3 = 8 \) combinations of \( P, Q, R \):
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|c|c|c|}
+\hline
+P & Q & R & $f = PQ + Q\overline{R} + P\overline{R}$ \\
+\hline
+0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+0 & 1 & 1 & 1 \\
+1 & 0 & 0 & 1 \\
+1 & 0 & 1 & 0 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\
+\hline
+\end{tabular}
+\caption*{\textbf{Truth Table for f(P, Q, R)}}
+\end{table}
+
+From the truth table, \( f = 1 \) for minterms: \( m_2, m_3, m_4, m_6, m_7 \)
+
+\[
+f(P, Q, R) = \sum m(2, 3, 4, 6, 7)
+\]
+
+\section*{\textcolor{blue}{Correct Option: (D)}}
+
+\vspace{1em}
+
+\section*{\textcolor{blue}{Components Required}}
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|>{\raggedright}p{5cm}|c|}
+\hline
+\textbf{Component} & \textbf{Quantity} \\
+\hline
+Raspberry Pi Pico2W / Arduino Uno & 1 \\
+Push Buttons (Inputs for P, Q, R) & 3 \\
+LED (Output indicator for f) & 1 \\
+220$\Omega$ Resistor & 1 \\
+10k$\Omega$ Resistors & 3 \\
+Breadboard & 1 \\
+Jumper Wires & As required \\
+USB Cable (Micro USB / USB-B) & 1 \\
+\hline
+\end{tabular}
+\caption*{\textbf{Table: Component List}}
+\end{table}
+
+\section*{\textcolor{blue}{GPIO Connection Table}}
+
+\subsection*{Raspberry Pi Pico2W}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Component & GPIO Pin & Role \\
+\hline
+Button P & GP14 & Input \\
+Button Q & GP15 & Input \\
+Button R & GP16 & Input \\
+LED f    & GP13 & Output \\
+GND      & GND  & Ground \\
+3.3V     & 3.3V & Pull-up \\
+\hline
+\end{tabular}
+\caption*{\textbf{Pico2W Connections}}
+\end{table}
+
+\subsection*{Arduino Uno}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Component & Pin & Role \\
+\hline
+Button P & D2 & Input \\
+Button Q & D3 & Input \\
+Button R & D4 & Input \\
+LED f    & D5 & Output \\
+GND      & GND & Ground \\
+VCC      & 5V & Pull-up \\
+\hline
+\end{tabular}
+\caption*{\textbf{Arduino Uno Connections}}
+\end{table}
+
+\section*{\textcolor{blue}{Theory: Uploading and Executing on Microcontrollers}}
+
+Microcontrollers such as Raspberry Pi Pico2W and Arduino Uno allow us to implement digital logic circuits using software and hardware integration. The logical expressions can be evaluated in real-time by reading digital input signals from push buttons and generating output through LEDs.
+
+\subsection*{\textcolor{blue}{Raspberry Pi Pico2W (MicroPython-based)}}
+
+\begin{itemize}
+    \item The Raspberry Pi Pico2W can be programmed using MicroPython via the Thonny IDE.
+    \item To upload code:
+    \begin{enumerate}
+        \item Connect Pico2W to PC while holding the \texttt{BOOTSEL} button.
+        \item It mounts as a USB drive named \texttt{RPI-RP2}.
+        \item Drag and drop the \texttt{MicroPython UF2} firmware file.
+        \item Open Thonny IDE, set the interpreter to “MicroPython (Raspberry Pi Pico)”.
+        \item Write the digital logic code using \texttt{machine.Pin()} and logic operations.
+        \item Click Run to upload and execute the code.
+    \end{enumerate}
+    \item The program continuously monitors GPIO pins connected to push buttons (representing inputs), evaluates the logic expression, and sets the output LED accordingly.
+\end{itemize}
+
+\subsection*{\textcolor{blue}{Arduino Uno (C/C++ based)}}
+
+\begin{itemize}
+    \item Arduino Uno uses the Arduino IDE and a simplified C++ syntax.
+    \item To upload code:
+    \begin{enumerate}
+        \item Connect the Uno board using USB.
+        \item Open Arduino IDE, select board as “Arduino Uno” and correct COM port.
+        \item Write a sketch using \texttt{digitalRead()} for inputs and \texttt{digitalWrite()} for output.
+        \item Click Upload (\texttt{→}) button to compile and flash the code.
+    \end{enumerate}
+    \item The Uno reads button states, evaluates the Boolean expression, and sets the LED pin high or low.
+\end{itemize}
+
+\textbf{Note:} Ensure pull-down resistors are used with push buttons to maintain a definite input logic level when the button is not pressed.
+
+This method effectively demonstrates Boolean logic practically, helping students to visualize logic gate behavior and truth table evaluation in real-time.
+
+
+
+\section*{\textcolor{blue}{GitHub Repository}}
+
+All code, circuit diagrams and images are available at: \\
+\texttt{https://github.com/Alekyakuruba/fwc/tree/main/hardware}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\linewidth]{cs6_exp.jpg}
+    \caption*{\textbf{Figure:Minterm Expansion Implementation}}
+\end{figure}
+
+\section*{\textcolor{blue}{Conclusion}}
+
+This question required evaluating the minterm expansion of a composite Boolean function. We analyzed the function, derived the truth table, identified minterms where output is 1, and verified using hardware with Pico2W and Arduino Uno.
+
+\textbf{Final Answer: (D) $m_2 + m_3 + m_4 + m_6 + m_7$}
+
+\end{document}
