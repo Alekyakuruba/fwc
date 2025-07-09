@@ -1,0 +1,175 @@
+\documentclass[twocolumn]{article}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{array}
+\geometry{margin=0.7in}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{figure}[H]
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{iiitb_comet.jpeg} % Replace with actual image path
+    \end{minipage} \hfill
+    \begin{minipage}{0.45\textwidth}
+        \textbf{Name: Karappagari Alekya} \\
+        \textbf{Batch: 2} \\
+        \textbf{ID: cometfwc024} \\
+        \textbf{Date: 9th July 2025}
+    \end{minipage}
+\end{figure}
+
+\begin{center}
+    {\LARGE \textbf{\textcolor{blue}{GATE Question Paper 2010, EC Question Number 53}}}
+\end{center}
+
+\vspace{1em}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{ee53.png} % Replace with actual path
+\end{figure}
+
+\section*{\textcolor{blue}{Question Analysis}}
+\textbf{We need to find the circuit that implements the minimized Boolean function:}
+\[
+F = \overline{X}Y + YZ
+\]
+
+\section*{\textcolor{blue}{Correct Option: (A)}}
+\textbf{Explanation:} Option (A) correctly represents the logic:
+\[
+\overline{X}Y + YZ
+\]
+using AND, OR, and NOT gates.
+
+\section*{\textcolor{blue}{Solution in Two Steps}}
+\begin{enumerate}[label=\textbf{Step \arabic*:}]
+    \item \textbf{Expression:} \( F = \overline{X}Y + YZ \) is in SOP form.
+    \item \textbf{Option (A)} correctly implements \( \overline{X}Y \) and \( YZ \) using AND gates and combines them using an OR gate.
+\end{enumerate}
+
+\section*{\textcolor{blue}{Truth Table}}
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|}
+\hline
+X & Y & Z & F = \( \overline{X}Y + YZ \) \\
+\hline
+0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+0 & 1 & 1 & 1 \\
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 0 \\
+1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 1 \\
+\hline
+\end{tabular}
+\caption*{\textbf{Truth Table of } \( F = \overline{X}Y + YZ \)}
+\end{table}
+
+\section*{\textcolor{blue}{Hardware Components}}
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{S.No} & \textbf{Component} \\ \hline
+1 & Raspberry Pi Pico2W \\
+2 & Arduino Uno \\
+3 & Breadboard \\
+4 & Push Buttons (3x) for X, Y, Z \\
+5 & LED for Output F \\
+6 & Resistors (220\(\Omega\) for LED, 10k\(\Omega\) for pull-downs) \\
+7 & Jumper Wires \\
+8 & Micro USB Cable \\
+\hline
+\end{tabular}
+\caption*{\textbf{Table: Required Components}}
+\end{table}
+
+\section*{\textcolor{blue}{GPIO Pin Connections (Pico2W)}}
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Component} & \textbf{Pico2W Pin} & \textbf{Description} \\
+\hline
+Button X & GP14 & Input X \\
+Button Y & GP15 & Input Y \\
+Button Z & GP16 & Input Z \\
+LED (Output F) & GP13 & Output Logic \\
+GND & GND & Common Ground \\
+3.3V & 3.3V & Pull-up Supply to Buttons \\
+\hline
+\end{tabular}
+\caption*{\textbf{Pico2W Pin Mapping}}
+\end{table}
+
+\section*{\textcolor{blue}{GPIO Pin Connections (Arduino Uno)}}
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Component} & \textbf{Arduino Pin} & \textbf{Description} \\
+\hline
+Button X & D2 & Input X \\
+Button Y & D3 & Input Y \\
+Button Z & D4 & Input Z \\
+LED & D13 & Output Logic \\
+GND & GND &  Ground \\
+Vcc & 5V & supply\\
+\hline
+\end{tabular}
+\caption*{\textbf{Arduino Pin Mapping}}
+\end{table}
+
+\section*{\textcolor{blue}{Uploading Code to Pico2W }}
+
+\begin{enumerate}
+    \item Connect the Raspberry Pi Pico2W to your computer using a USB cable while holding the \textbf{BOOTSEL} button.
+    \item The board appears as a USB drive on your computer.
+    \item Download and drag the MicroPython \texttt{.uf2} firmware file to the Pico's USB drive.
+    \item Open the \textbf{Thonny IDE} on your computer.
+    \item In Thonny, go to \texttt{Tools} $\rightarrow$ \texttt{Interpreter} and select \textbf{MicroPython (Raspberry Pi Pico)}.
+    \item Write or paste your Python code (logic implementation).
+    \item Click \textbf{Run} or press \texttt{F5} to upload and execute the code on Pico2W.
+    \item Observe the output on the LED based on button inputs.
+\end{enumerate}
+
+\section*{\textcolor{blue}{Uploading Code to Arduino Uno }}
+
+\begin{enumerate}
+    \item Connect the Arduino Uno to your computer using a USB cable.
+    \item Open the \textbf{Arduino IDE} (download from \texttt{arduino.cc} if not installed).
+    \item Select the correct board and port:
+    \begin{itemize}
+        \item Go to \texttt{Tools} $\rightarrow$ \texttt{Board} $\rightarrow$ \textbf{Arduino Uno}
+        \item Then \texttt{Tools} $\rightarrow$ \texttt{Port} $\rightarrow$ Select your device port
+    \end{itemize}
+    \item Write or paste your logic code (e.g., for NOR gate or expression implementation).
+    \item Click the \textbf{Upload} button (right arrow icon) or press \texttt{Ctrl+U}.
+    \item Wait for “Done uploading” message.
+    \item Test using push buttons and observe output on the LED.
+\end{enumerate}
+\vspace{1em}
+\section*{\textcolor{blue}{GitHub Repository}}
+\texttt{https://github.com/Alekyakuruba/fwc/tree/main/hardware}
+\vspace{1em}
+\section*{\textcolor{blue}{Conclusion}}
+Option \textbf{(A)} implements the given minimized logic expression \( F = \overline{X}Y + YZ \) correctly. Truth table and hardware testing validate the circuit on both Raspberry Pi Pico2W and Arduino Uno.
+\vspace{2em}\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{ee53_exp.jpg}
+    \caption*{\textbf{Figure: Logic Circuit Implememtation}}
+\end{figure}
+\end{document}
